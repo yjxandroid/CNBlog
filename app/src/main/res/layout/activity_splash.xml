@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:id="@+id/rl_content">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@id/iv_icon"
+        android:id="@+id/tv_detail"
+        android:text="记录生活之美"
+        android:textColor="#0091ea"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:textSize="22sp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+
+        android:layout_alignParentBottom="true"
+        android:id="@+id/tv"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/darker_gray"
+        android:text="2015年博客园非官方开发小组"
+        android:textSize="16sp"
+        android:layout_marginBottom="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_above="@id/tv"
+        android:textSize="16sp"
+        android:text="YJX出品"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

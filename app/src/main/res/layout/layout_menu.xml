@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="280dp"
+    android:background="@android:color/white"
+    android:layout_gravity="start"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="fill_parent"
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_below="@id/ll"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:singleLine="true"
+            android:textSize="18sp"
+            android:drawableLeft="@drawable/ic_drawer_home_normal"
+            android:text="  首页"
+            android:background="@drawable/menuitem_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp" />
+
+        <TextView
+            android:id="@+id/tv_blog"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:text="博客"
+            android:background="@drawable/menuitem_selector"
+            android:visibility="gone"
+            android:paddingLeft="30dp"
+
+            android:layout_width="fill_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:background="@drawable/menuitem_selector"
+            android:visibility="gone"
+            android:id="@+id/tv_news"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:text="新闻"
+            android:paddingLeft="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_below="@id/ll1"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/tv_explore"
+        android:textColor="@android:color/black"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_drawer_explore_normal"
+        android:text="  发现"
+        android:gravity="center_vertical"
+
+        android:background="@drawable/menuitem_selector"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp" />
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_below="@id/tv_explore"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/menuitem_selector"
+
+        android:id="@+id/tv_collect"
+        android:textColor="@android:color/black"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/ic_drawer_collect_normal"
+        android:text="  收藏"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp" />
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_below="@id/tv_collect"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/menuitem_selector"
+
+        android:id="@+id/tv_setting"
+        android:textColor="@android:color/black"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/settting"
+        android:text="  设置"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp" />
+
+    <View
+        android:layout_below="@id/tv_setting"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/tv_version"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@android:color/darker_gray"
+            android:text="2015年博客园非官方开发小组"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</RelativeLayout>

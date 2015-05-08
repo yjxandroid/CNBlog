@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/ab_search"
+        android:orderInCategory="80"
+        android:title="搜索"
+        android:icon="@drawable/abc_ic_search_api_mtrl_alpha"
+        app:showAsAction="always" />
+
+</menu>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="@android:color/white"
+    android:layout_height="48dp">
+    <pl.tajchert.sample.DotsTextView
+        xmlns:dots="http://schemas.android.com/apk/res-auto"
+        android:text="加载中"
+        dots:autoplay="false"
+        dots:period="175"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

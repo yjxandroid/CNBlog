@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">博客园</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="home">博客</string>
+    <string name="news">新闻</string>
+    <string name="explore">发现</string>
+</resources>

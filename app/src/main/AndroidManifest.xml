@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yjx.cnblog">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name=".CNBlogApplication">
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+        </activity>
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.BlogDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.NewsDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.AuthorActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
