@@ -10,20 +10,21 @@
 
         <CheckBoxPreference
             android:layout="@layout/preference_item"
-
             android:title="WIFI 下自动离线"
+            android:key="wifidown"
             android:summaryOn="自动下载已经浏览过的文章"
             android:summaryOff="自动下载已经浏览过的文章"
             android:defaultValue="true" />
         <CheckBoxPreference
             android:layout="@layout/preference_item"
-
+            android:key="3g"
             android:title="2G/3G 网络不下载图片"
             android:summaryOff="开启后节省流量"
             android:summaryOn="开启后节省流量"
             android:defaultValue="true" />
         <CheckBoxPreference
             android:title="夜间模式"
+            android:key="night"
             android:summaryOff="保护你的眼睛啦"
             android:layout="@layout/preference_item"
 
