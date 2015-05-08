@@ -5,12 +5,16 @@ package com.yjx.cnblog.activity;/**
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -29,6 +33,7 @@ import com.yjx.cnblog.Constant;
 import com.yjx.cnblog.R;
 import com.yjx.cnblog.base.BaseActivity;
 import com.yjx.cnblog.bean.InfoBean;
+import com.yjx.cnblog.fragment.SetttingFragment;
 import com.yjx.cnblog.utils.HTMLUtils;
 import com.yjx.cnblog.utils.NetUtils;
 import com.yjx.cnblog.utils.StringUtils;
@@ -66,6 +71,7 @@ public class NewsDetailActivity extends BaseActivity {
     InfoBean info;//新闻基础信息
     AlertDialog dialog;
     DB snappydb;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_newsdetail;
@@ -104,7 +110,7 @@ public class NewsDetailActivity extends BaseActivity {
             dialog.setTitle("数据加载中...");
             dialog.show();
             getNewsDetail();
-        }else{
+        } else {
             try {
                 wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", snappydb.get(info.getId()), "text/html", "utf-8", null);
             } catch (SnappydbException e) {
@@ -115,7 +121,8 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     protected void setListener() {
-        super.setListener(); sl.setOnCusScrollChanged(new CustomScrollView.onCusScrollChanged() {
+        super.setListener();
+        sl.setOnCusScrollChanged(new CustomScrollView.onCusScrollChanged() {
             @Override
             public void onCusScrollChanged(int l, int t, int oldl, int oldt) {
                 if (t - oldt > MAX_DIS && isshow) {
@@ -137,7 +144,10 @@ public class NewsDetailActivity extends BaseActivity {
                 }
             }
         });
+        wv_blogdetail.addJavascriptInterface(new JavaScriptInterface(this), "cnblog");
+
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -198,15 +208,31 @@ public class NewsDetailActivity extends BaseActivity {
                 try {
                     JSONObject object = new JSONObject(response);
                     if (object.has("data")) {
-                        String main= StringUtils.readIn(getAssets().open("content.html"));
+                        String main = StringUtils.readIn(getAssets().open("content.html"));
                         String content = object.getString("data");
 //                        content = content.replace("<br />", "\n").replace("<br/>", "\n").replace("&nbsp;&nbsp;", "\t").replace("&nbsp;", " ").replace("&#39;", "\\").replace("&quot;", "\\").replace("&gt;", ">").replace("&lt;", "<").replace("&amp;", "&");
                         content = content.replace("background-color: #F5F5F5;", "background-color: #4e4e4e;").replace("color: #000000;", "color: #8590A2;").replace("color: #0000ff;", "color: #1799ff;").replace("color: #008000;", "color: #00b200;").replace("color: #800000;", "color: #ca0000;");
-                        content= HTMLUtils.replaceFont(content);
-                        content=main.replace("{html}", content);
-                        wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
-                        snappydb.del(info.getId());
-                        snappydb.put(info.getId(), content);
+//                        content= HTMLUtils.replaceFont(content);
+                        if (SetttingFragment.isShowImg(ctx)) {
+                            if (NetUtils.isWifi(ctx)) {
+                                content = main.replace("{html}", content);
+                                wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
+                                snappydb.del(info.getId());
+                                snappydb.put(info.getId(), content);
+                            } else {
+                                content = HTMLUtils.replaceImgTag(content);
+                                content=HTMLUtils.FormatImgTag(content);
+                                content = main.replace("{html}", content);
+                                wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
+                                snappydb.del(info.getId());
+                                snappydb.put(info.getId(), content);
+                            }
+                        } else {
+                            content = main.replace("{html}", content);
+                            wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
+                            snappydb.del(info.getId());
+                            snappydb.put(info.getId(), content);
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -229,6 +255,7 @@ public class NewsDetailActivity extends BaseActivity {
     public void onClick(View v) {
 
     }
+
     /**
      * 初始化Toolbar
      */
@@ -236,5 +263,30 @@ public class NewsDetailActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("新闻正文");
+    }
+    public class JavaScriptInterface
+    {
+        Context mContext;
+
+        public JavaScriptInterface(Context paramContext)
+        {
+            this.mContext = paramContext;
+        }
+@JavascriptInterface
+        public void openURL(String url)
+        {
+            Intent localIntent = new Intent();
+            localIntent.setAction("android.intent.action.VIEW");
+            localIntent.setData(Uri.parse(url));
+            mContext.startActivity(localIntent);
+        }
+@JavascriptInterface
+        public void showImg(String url)
+        {
+            Intent localIntent = new Intent();
+           localIntent.setClass(this.mContext, ShowImgActivity.class);
+            localIntent.putExtra("imageurl", url);
+            this.mContext.startActivity(localIntent);
+        }
     }
 }

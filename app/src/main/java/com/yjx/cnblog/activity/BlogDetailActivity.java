@@ -7,13 +7,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -32,6 +32,7 @@ import com.yjx.cnblog.Constant;
 import com.yjx.cnblog.R;
 import com.yjx.cnblog.base.BaseActivity;
 import com.yjx.cnblog.bean.InfoBean;
+import com.yjx.cnblog.fragment.SetttingFragment;
 import com.yjx.cnblog.utils.HTMLUtils;
 import com.yjx.cnblog.utils.NetUtils;
 import com.yjx.cnblog.utils.StringUtils;
@@ -146,7 +147,7 @@ public class BlogDetailActivity extends BaseActivity {
                 }
             }
         });
-//        wv_blogdetail.addJavascriptInterface(new JavaScriptInterface());
+        wv_blogdetail.addJavascriptInterface(new JavaScriptInterface(this), "cnblog");
     }
 
     @Override
@@ -232,13 +233,21 @@ public class BlogDetailActivity extends BaseActivity {
                                 replace("&lt;", "<").replace("&amp;", "&");
                         content = content.replace("background-color: #F5F5F5;", "background-color: #4e4e4e;").replace("color: #000000;", "color: #8590A2;").replace("color: #0000ff;", "color: #1799ff;").replace("color: #008000;", "color: #00b200;").replace("color: #800000;", "color: #ca0000;");
 //                        content=HTMLUtils.replaceFont(content);
-                        if (NetUtils.isWifi(ctx)) {
-                            content = main.replace("{html}", content);
-                            wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
-                            snappydb.del(info.getId());
-                            snappydb.put(info.getId(), content);
+                        if (SetttingFragment.isShowImg(ctx)) {
+                            if (NetUtils.isWifi(ctx)) {
+                                content = main.replace("{html}", content);
+                                wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
+                                snappydb.del(info.getId());
+                                snappydb.put(info.getId(), content);
+                            } else {
+                                content = HTMLUtils.replaceImgTag(content);
+                                content=HTMLUtils.FormatImgTag(content);
+                                content = main.replace("{html}", content);
+                                wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
+                                snappydb.del(info.getId());
+                                snappydb.put(info.getId(), content);
+                            }
                         } else {
-                            content = HTMLUtils.replaceImgTag(content);
                             content = main.replace("{html}", content);
                             wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
                             snappydb.del(info.getId());
@@ -262,29 +271,25 @@ public class BlogDetailActivity extends BaseActivity {
         client.addTask(request);
     }
 
-    public class JavaScriptInterface
-    {
+    public class JavaScriptInterface {
         Context mContext;
-        String url;
 
-        public JavaScriptInterface(String url, Context paramContext)
-        {
+        public JavaScriptInterface(Context paramContext) {
             this.mContext = paramContext;
-            this.url=url;
         }
 
-        public void openURL()
-        {
+        @JavascriptInterface
+        public void openURL() {
             Intent localIntent = new Intent();
             localIntent.setAction("android.intent.action.VIEW");
-            localIntent.setData(Uri.parse(this.url));
+//            localIntent.setData(Uri.parse(this.url));
             mContext.startActivity(localIntent);
         }
 
-        public void showImg()
-        {
+        @JavascriptInterface
+        public void showImg(String url) {
             Intent localIntent = new Intent();
-//            localIntent.setClass(this.mContext, ImageShowActivity.class);
+            localIntent.setClass(this.mContext, ShowImgActivity.class);
             localIntent.putExtra("imageurl", url);
             this.mContext.startActivity(localIntent);
         }
