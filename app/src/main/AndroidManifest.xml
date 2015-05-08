@@ -46,7 +46,10 @@
             android:icon="@drawable/ic_launcher"
             android:name=".activity.SettingActivity"
             android:screenOrientation="portrait" />
-
+        <activity
+            android:icon="@drawable/ic_launcher"
+            android:name=".activity.ShowImgActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:icon="@drawable/ic_launcher"
             android:name=".activity.AboutActivity"
