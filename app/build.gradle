@@ -18,6 +18,9 @@ android {
         }
     }
 }
+repositories {
+    mavenCentral()
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -36,4 +39,6 @@ dependencies {
     compile files('libs/jsoup-1.8.2.jar')
     compile files('libs/fastjson-1.1.33.jar')
     compile 'com.github.d-max:spots-dialog:0.2@aar'
+    compile 'com.github.chrisbanes.photoview:library:1.2.2'
+
 }
