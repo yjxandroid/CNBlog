@@ -3,13 +3,272 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
+   >
 
     <include layout="@layout/layout_top" />
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@android:color/white"
-        android:id="@+id/fl" />
+        android:id="@+id/fl" android:background="@android:color/white"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:id="@android:id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:text="人性化自由选择" />
+
+            <LinearLayout
+                android:id="@+id/ll_wifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@android:id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:text="WIFI 下自动离线"
+
+                        android:textColor="@color/item_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@android:id/summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@android:id/title"
+                        android:text="自动下载已经浏览过的文章"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@android:id/widget_frame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:layout_width="wrap_content"
+                        android:button="@null"
+                        android:id="@+id/cb_wifi"
+                        android:background="@drawable/checkbox_selector"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_gg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@android:id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:text="2G/3G 网络不下载图片"
+
+                        android:textColor="@color/item_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@android:id/summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@android:id/title"
+                        android:text="开启后节省流量"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@android:id/widget_frame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:button="@null"
+                        android:background="@drawable/checkbox_selector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_gg"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@android:id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:text="帮助" />
+
+            <LinearLayout
+                android:id="@+id/ll_about"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@android:id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:text="关于"
+
+                    android:textColor="@color/item_color"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@android:id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:text="手动检查更新"
+                    android:textColor="@color/item_color"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_what"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@android:id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:fadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:text="这是什么?"
+                    android:textColor="@color/item_color"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@android:id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:text="感谢有你" />
+
+            <LinearLayout
+                android:id="@+id/ll_blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@android:id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:text="作者:YJX"
+
+                        android:textColor="@color/item_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@android:id/summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@android:id/title"
+                        android:text="我的博客：http://www.cnblogs.com/likeandroid/"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

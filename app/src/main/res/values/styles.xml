@@ -4,23 +4,36 @@
     <style name="AppTheme" parent="BaseAPPTheme">
 
     </style>
-    <style name="BaseAPPTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    <style name="BaseAPPTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
+
     <style name="Custom" parent="android:Theme.DeviceDefault.Dialog">
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">数据加载中...</item>
         <item name="DialogSpotColor">@android:color/holo_orange_dark</item>
         <item name="DialogSpotCount">4</item>
     </style>
+
     <style name="Search" parent="android:Theme.DeviceDefault.Dialog">
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">搜索中...</item>
         <item name="DialogSpotColor">@android:color/holo_orange_dark</item>
         <item name="DialogSpotCount">4</item>
     </style>
+
+    <style name="MyDialog" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="android:background">#fff</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="MyStytle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">#fff</item>
+    </style>
+
 </resources>
