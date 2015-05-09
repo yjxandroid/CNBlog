@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 
 import com.yjx.cnblog.R;
 import com.yjx.cnblog.db.SPHelper;
@@ -36,6 +37,14 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             setTheme(R.style.AppThemeNight);
         }
         setContentView(getLayoutId());
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            if (!SPHelper.getTheme(this)){
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            }else{
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDarkNight));
+            }
+        }
         ctx = this;
         client=AsynHttpClient.getInstance(getApplicationContext());
         ButterKnife.inject(this);
