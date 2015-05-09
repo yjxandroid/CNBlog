@@ -63,6 +63,8 @@ public class NewsDetailActivity extends BaseActivity {
     TextView tv_title;
     @InjectView(value = R.id.ll_bottommenu)
     LinearLayout ll_bottommenu;
+    @InjectView(value = R.id.ll_comment)
+    LinearLayout ll_comment;
     int screenWidht, screenHeight;
     int bottomheight;
     final int MAX_DIS = 15;
@@ -145,7 +147,7 @@ public class NewsDetailActivity extends BaseActivity {
             }
         });
         wv_blogdetail.addJavascriptInterface(new JavaScriptInterface(this), "cnblog");
-
+        ll_comment.setOnClickListener(this);
     }
 
     @Override
@@ -221,7 +223,7 @@ public class NewsDetailActivity extends BaseActivity {
                                 snappydb.put(info.getId(), content);
                             } else {
                                 content = HTMLUtils.replaceImgTag(content);
-                                content=HTMLUtils.FormatImgTag(content);
+                                content = HTMLUtils.FormatImgTag(content);
                                 content = main.replace("{html}", content);
                                 wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
                                 snappydb.del(info.getId());
@@ -253,7 +255,15 @@ public class NewsDetailActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.ll_comment:
+                Intent intent = new Intent(ctx, CommentsActivity.class);
+                intent.putExtra("BLOGID", info.getId());
+                intent.putExtra("TYPE", 2);
+                startActivity(intent);
+                overridePendingTransition(0,0);
+                break;
+        }
     }
 
     /**
@@ -264,29 +274,29 @@ public class NewsDetailActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("新闻正文");
     }
-    public class JavaScriptInterface
-    {
+
+    public class JavaScriptInterface {
         Context mContext;
 
-        public JavaScriptInterface(Context paramContext)
-        {
+        public JavaScriptInterface(Context paramContext) {
             this.mContext = paramContext;
         }
-@JavascriptInterface
-        public void openURL(String url)
-        {
+
+        @JavascriptInterface
+        public void openURL(String url) {
             Intent localIntent = new Intent();
             localIntent.setAction("android.intent.action.VIEW");
             localIntent.setData(Uri.parse(url));
             mContext.startActivity(localIntent);
         }
-@JavascriptInterface
-        public void showImg(String url)
-        {
+
+        @JavascriptInterface
+        public void showImg(String url) {
             Intent localIntent = new Intent();
-           localIntent.setClass(this.mContext, ShowImgActivity.class);
+            localIntent.setClass(this.mContext, ShowImgActivity.class);
             localIntent.putExtra("imageurl", url);
             this.mContext.startActivity(localIntent);
+            overridePendingTransition(0,0);
         }
     }
 }

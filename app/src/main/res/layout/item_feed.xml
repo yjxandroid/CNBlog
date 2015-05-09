@@ -20,17 +20,18 @@
             android:id="@+id/tv_floor"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:text="#1楼"
+            android:singleLine="true"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_time"
+            android:singleLine="true"
 
             android:layout_toRightOf="@id/tv_floor"
             android:layout_marginLeft="2dp"
             android:textSize="16sp"
-            android:text="2015-04-26T20:11:31"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -41,7 +42,7 @@
             android:layout_toRightOf="@id/tv_time"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            android:text="中和软件信息技术推进"
+            android:singleLine="true"
             android:layout_marginLeft="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -52,7 +53,6 @@
 
             android:layout_below="@id/tv_floor"
             android:textSize="16sp"
-            android:text="还是Native!不需要hybird！估计那个博客内容展示那边我估计用webview我还没有看博客园到底怎么返回数据的"
             android:textColor="@android:color/darker_gray"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"

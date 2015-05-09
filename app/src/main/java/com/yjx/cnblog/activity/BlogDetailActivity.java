@@ -196,7 +196,9 @@ public class BlogDetailActivity extends BaseActivity {
             case R.id.ll_comment:
                 Intent intent = new Intent(ctx, CommentsActivity.class);
                 intent.putExtra("BLOGID", info.getId());
+                intent.putExtra("TYPE",1);
                 startActivity(intent);
+                overridePendingTransition(0,0);
                 break;
         }
     }
@@ -303,6 +305,7 @@ public class BlogDetailActivity extends BaseActivity {
             localIntent.setClass(this.mContext, ShowImgActivity.class);
             localIntent.putExtra("imageurl", url);
             this.mContext.startActivity(localIntent);
+            overridePendingTransition(0,0);
         }
     }
 }

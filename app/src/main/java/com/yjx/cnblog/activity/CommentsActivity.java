@@ -52,6 +52,7 @@ public class CommentsActivity extends BaseActivity {
     FeedAdapter adapter;
     int page = 1;
     String blogid;
+    int type;//1表示博客评论 2表示新闻评论
 
     android.app.AlertDialog dialog;
     int screenWidht, screenHeight;
@@ -66,6 +67,7 @@ public class CommentsActivity extends BaseActivity {
     protected void initData() {
         super.initData();
         blogid=getIntent().getStringExtra("BLOGID");
+        type=getIntent().getIntExtra("TYPE",1);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("评论");
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -150,7 +152,8 @@ public class CommentsActivity extends BaseActivity {
     }
 
     private void getData() {
-        XMLRequest request = new XMLRequest(Request.Method.GET, Constant.URL + "post/" + blogid + "/comments/" + page + "/" + Constant.PAFESIZE, new Response.ErrorListener() {
+        String url= type==1?Constant.URL + "post/" + blogid + "/comments/" + page + "/" + Constant.PAFESIZE:Constant.NEWSURL + "item/" + blogid + "/comments/" + page + "/" + Constant.PAFESIZE;
+        XMLRequest request = new XMLRequest(Request.Method.GET, url, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 dialog.cancel();
