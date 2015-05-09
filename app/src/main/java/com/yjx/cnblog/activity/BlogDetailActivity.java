@@ -63,6 +63,9 @@ public class BlogDetailActivity extends BaseActivity {
     TextView tv_title;
     @InjectView(value = R.id.ll_bottommenu)
     LinearLayout ll_bottommenu;
+    @InjectView(value = R.id.ll_comment)
+    LinearLayout ll_comment;
+
     int screenWidht, screenHeight;
     int bottomheight;
     final int MAX_DIS = 15;
@@ -148,6 +151,7 @@ public class BlogDetailActivity extends BaseActivity {
             }
         });
         wv_blogdetail.addJavascriptInterface(new JavaScriptInterface(this), "cnblog");
+        ll_comment.setOnClickListener(this);
     }
 
     @Override
@@ -188,7 +192,13 @@ public class BlogDetailActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.ll_comment:
+                Intent intent = new Intent(ctx, CommentsActivity.class);
+                intent.putExtra("BLOGID", info.getId());
+                startActivity(intent);
+                break;
+        }
     }
 
     @Override
@@ -242,7 +252,7 @@ public class BlogDetailActivity extends BaseActivity {
                                 snappydb.put(info.getId(), content);
                             } else {
                                 content = HTMLUtils.replaceImgTag(content);
-                                content=HTMLUtils.FormatImgTag(content);
+                                content = HTMLUtils.FormatImgTag(content);
                                 content = main.replace("{html}", content);
                                 wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
                                 snappydb.del(info.getId());

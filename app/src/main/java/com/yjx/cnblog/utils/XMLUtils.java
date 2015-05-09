@@ -3,6 +3,7 @@ package com.yjx.cnblog.utils;/**
  */
 
 import com.yjx.cnblog.bean.AuthorBean;
+import com.yjx.cnblog.bean.FeedBean;
 import com.yjx.cnblog.bean.InfoBean;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -158,5 +159,85 @@ public final class XMLUtils {
         }
 
         return content;
+    }
+
+    /**
+     * 解析评论信息
+     *
+     * @param parser 解析器
+     * @return
+     */
+    public static ArrayList<FeedBean> getFeeds(XmlPullParser parser) {
+        ArrayList<FeedBean> blogs = null;
+        FeedBean blog = null;
+        AuthorBean author = null;
+        int type = 0;
+        try {
+            type = parser.getEventType();
+            while (type != XmlPullParser.END_DOCUMENT) {
+                switch (type) {
+                    case XmlPullParser.START_DOCUMENT:
+
+                        break;
+                    case XmlPullParser.START_TAG:
+                        String name = parser.getName();
+                        if ("feed".equals(name)) {
+                            blogs = new ArrayList<FeedBean>();
+                        } else if ("entry".equals(name)) {
+                            blog = new FeedBean();
+                        } else if ("id".equals(name)) {
+                            if (blog != null)
+                                blog.setId(parser.nextText());
+                        } else if ("title".equals(name)) {
+                            if (blog != null)
+
+                                blog.setTitle(parser.nextText());
+                        } else if ("published".equals(name)) {
+                            if (blog != null)
+
+                                blog.setPublishedtime(parser.nextText());
+                        } else if ("updated".equals(name)) {
+                            if (blog != null)
+
+                                blog.setUpdatedtime(parser.nextText());
+                        } else if ("content".equals(name)) {
+                            if (blog != null)
+
+                                blog.setContent(parser.nextText());
+                        }else if ("author".equals(name)) {
+                            author = new AuthorBean();
+                        }  else if ("name".equals(name)) {
+                            if (author != null)
+                                author.setName(parser.nextText());
+
+                        } else if ("avatar".equals(name)) {
+                            if (author != null)
+                                author.setAvatar(parser.nextText());
+
+                        } else if ("uri".equals(name)) {
+                            if (author != null)
+                                author.setUri(parser.nextText());
+
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        if ("entry".equals(parser.getName())) {
+                            blogs.add(blog);
+                            blog = null;
+                        }
+                        if ("author".equals(parser.getName())) {
+                            if (blog != null && author != null) {
+                                blog.setAuthor(author);
+                            }
+
+                        }
+                        break;
+                }
+                type = parser.next();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return blogs;
     }
 }
