@@ -1,5 +1,6 @@
 package com.yjx.cnblog.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -54,7 +55,7 @@ public class MainActivity extends BaseActivity {
     HomeFragment blogFragment;
     Fragment curfragment;
     ExploreFragment exploreFragment;
-    int  state=1;
+    int state = 1;
 
 
     @Override
@@ -132,7 +133,7 @@ public class MainActivity extends BaseActivity {
                     jumpFrm(curfragment, blogFragment, R.id.frm_content, "首页");
                 }
                 curfragment = blogFragment;
-                state=1;
+                state = 1;
                 drawerlayout.closeDrawer(rl_menu);
                 EventBus.getDefault().post("true");
                 getSupportActionBar().setTitle(R.string.home);
@@ -148,14 +149,14 @@ public class MainActivity extends BaseActivity {
                     jumpFrm(curfragment, blogFragment, R.id.frm_content, "首页");
                 }
                 curfragment = blogFragment;
-                state=2;
+                state = 2;
                 drawerlayout.closeDrawer(rl_menu);
                 EventBus.getDefault().post("false");
                 getSupportActionBar().setTitle(R.string.news);
                 break;
             case R.id.tv_explore:
                 //发现
-                state=3;
+                state = 3;
                 drawerlayout.closeDrawer(rl_menu);
                 if (exploreFragment == null) {
                     exploreFragment = new ExploreFragment();
@@ -175,10 +176,16 @@ public class MainActivity extends BaseActivity {
             case R.id.tv_setting:
                 //设置页面
                 drawerlayout.closeDrawer(rl_menu);
-                jumpAct(SettingActivity.class,false);
+                Intent intent = new Intent(this, SettingActivity.class);
+                startActivityForResult(intent, 200);
                 break;
 
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
@@ -198,10 +205,12 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                switch (state){
-                    case 1: getSupportActionBar().setTitle(R.string.home);
+                switch (state) {
+                    case 1:
+                        getSupportActionBar().setTitle(R.string.home);
                         break;
-                    case 2: getSupportActionBar().setTitle(R.string.news);
+                    case 2:
+                        getSupportActionBar().setTitle(R.string.news);
                         break;
                     case 3:
                         getSupportActionBar().setTitle(R.string.explore);

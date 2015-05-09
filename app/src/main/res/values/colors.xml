@@ -9,4 +9,9 @@
     <color name="theme_primary">#4387F0</color>
     <color name="theme_primary_dark">#ff2b4d90</color>
     <color name="colorAccent">#18b000</color>
+
+    <color name="colorPrimaryNight">#1A1A1B</color>
+    <color name="colorPrimaryDarkNight">#1E1F21</color>
+    <color name="gray">#AAAAAA</color>
+
 </resources>

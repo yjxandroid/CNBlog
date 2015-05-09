@@ -12,6 +12,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.yjx.cnblog.R;
+import com.yjx.cnblog.db.SPHelper;
 import com.yjx.cnblog.net.AsynHttpClient;
 
 import butterknife.ButterKnife;
@@ -28,6 +30,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!SPHelper.getTheme(this)){
+            setTheme(R.style.AppTheme);
+        }else{
+            setTheme(R.style.AppThemeNight);
+        }
         setContentView(getLayoutId());
         ctx = this;
         client=AsynHttpClient.getInstance(getApplicationContext());

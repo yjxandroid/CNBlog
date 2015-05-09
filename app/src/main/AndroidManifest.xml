@@ -25,6 +25,7 @@
         <activity
             android:icon="@drawable/ic_launcher"
             android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:icon="@drawable/ic_launcher"

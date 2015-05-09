@@ -7,13 +7,14 @@
     app:cardCornerRadius="2dp"
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
-    android:background="@android:color/white"
+
     android:layout_marginTop="10dp">
 
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:padding="4dp"
+        android:background="?attr/appbg"
         android:layout_height="wrap_content">
 
         <TextView
@@ -32,7 +33,7 @@
             android:layout_toRightOf="@id/tv_floor"
             android:layout_marginLeft="2dp"
             android:textSize="16sp"
-            android:textColor="@android:color/black"
+            android:textColor="?attr/textLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -53,7 +54,7 @@
 
             android:layout_below="@id/tv_floor"
             android:textSize="16sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="?attr/textNight"
             android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

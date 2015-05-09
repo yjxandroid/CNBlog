@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
 
     <include layout="@layout/layout_top" />
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:id="@+id/fl" android:background="@android:color/white"
+        android:id="@+id/fl"
+        android:background="?attr/appbg"
         android:layout_height="fill_parent">
 
         <LinearLayout
@@ -52,7 +52,7 @@
                         android:singleLine="true"
                         android:text="WIFI 下自动离线"
 
-                        android:textColor="@color/item_color"
+                        android:textColor="?attr/textLight"
                         android:textSize="16sp" />
 
                     <TextView
@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@android:id/title"
                         android:text="自动下载已经浏览过的文章"
-                        android:textColor="#AAAAAA"
+                        android:textColor="?attr/textNight"
                         android:textSize="14sp" />
 
                 </RelativeLayout>
@@ -108,7 +108,7 @@
                         android:singleLine="true"
                         android:text="2G/3G 网络不下载图片"
 
-                        android:textColor="@color/item_color"
+                        android:textColor="?attr/textLight"
                         android:textSize="16sp" />
 
                     <TextView
@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@android:id/title"
                         android:text="开启后节省流量"
-                        android:textColor="#AAAAAA"
+                        android:textColor="?attr/textNight"
                         android:textSize="14sp" />
 
                 </RelativeLayout>
@@ -134,7 +134,63 @@
                         android:background="@drawable/checkbox_selector"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/cb_gg"/>
+                        android:id="@+id/cb_gg" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_theme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menuitem_selector"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:minHeight="?android:listPreferredItemHeight"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@android:id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:fadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:text="切换主题"
+
+                        android:textColor="?attr/textLight"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@android:id/summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@android:id/title"
+                        android:text="适合躲在被窝里看！"
+                        android:textColor="?attr/textNight"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@android:id/widget_frame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:button="@null"
+                        android:background="@drawable/checkbox_selector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cb_theme" />
                 </LinearLayout>
 
 
@@ -170,7 +226,7 @@
                     android:singleLine="true"
                     android:text="关于"
 
-                    android:textColor="@color/item_color"
+                    android:textColor="?attr/textLight"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -193,7 +249,7 @@
                     android:fadingEdge="horizontal"
                     android:singleLine="true"
                     android:text="手动检查更新"
-                    android:textColor="@color/item_color"
+                    android:textColor="?attr/textLight"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -215,7 +271,7 @@
                     android:fadingEdge="horizontal"
                     android:singleLine="true"
                     android:text="这是什么?"
-                    android:textColor="@color/item_color"
+                    android:textColor="?attr/textLight"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -253,7 +309,7 @@
                         android:singleLine="true"
                         android:text="作者:YJX"
 
-                        android:textColor="@color/item_color"
+                        android:textColor="?attr/textLight"
                         android:textSize="16sp" />
 
                     <TextView
@@ -262,7 +318,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@android:id/title"
                         android:text="我的博客：http://www.cnblogs.com/likeandroid/"
-                        android:textColor="#AAAAAA"
+                        android:textColor="?attr/textNight"
                         android:textSize="14sp" />
 
                 </RelativeLayout>

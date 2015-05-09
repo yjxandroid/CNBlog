@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textLight" format="reference" />
+    <attr name="textNight" format="reference" />
+    <attr name="appbg" format="reference" />
+</resources>

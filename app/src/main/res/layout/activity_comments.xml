@@ -9,7 +9,7 @@
     <com.yjx.cnblog.view.SwipeLoadRefreshLayout
         android:layout_width="match_parent"
         android:id="@+id/sl"
-        android:background="@android:color/white"
+        android:background="?attr/appbg"
         android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

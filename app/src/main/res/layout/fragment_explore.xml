@@ -7,7 +7,7 @@
     <com.yjx.cnblog.view.SlidingTabLayout
         android:id="@+id/slid_top"
         android:layout_width="fill_parent"
-        android:background="@color/colorPrimary"
+        android:background="?attr/colorPrimary"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 

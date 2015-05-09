@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,7 +11,6 @@
 
     <LinearLayout
         android:id="@+id/ll_item"
-
         android:background="@drawable/menuitem_selector"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,14 +45,14 @@
                     android:singleLine="true"
 
                     android:layout_marginTop="8dp"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="?attr/textNight"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
 
             <TextView
                 android:id="@+id/tv_title"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/textLight"
                 android:text="记一次android登陆页面的实现"
                 android:singleLine="true"
                 android:textSize="18sp"
@@ -65,7 +63,7 @@
 
             <TextView
                 android:id="@+id/tv_detail"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/textNight"
                 android:text="记一次android登陆页面的实现记一次android登陆页面的实现记一次android登陆页面的实现记一次android登陆页面的实现记一次android登陆页面的实现"
                 android:textSize="16sp"
                 android:layout_below="@id/tv_title"
@@ -82,7 +80,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="8dp"
                 android:singleLine="true"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/textNight"
                 android:textSize="16sp"
                 android:text="2014:11111111"
                 android:layout_width="wrap_content"
@@ -113,7 +111,7 @@
                 <TextView
                     android:id="@+id/tv_comments"
                     android:layout_marginLeft="4dp"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="?attr/textNight"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -134,7 +132,7 @@
                 <TextView
                     android:id="@+id/tv_read"
                     android:layout_marginLeft="4dp"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="?attr/textNight"
                     android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -155,7 +153,7 @@
                 <TextView
                     android:id="@+id/tv_collect"
                     android:layout_marginLeft="4dp"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="?attr/textNight"
                     android:textSize="18sp"
                     android:text="立刻收藏"
                     android:layout_width="wrap_content"

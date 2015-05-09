@@ -13,7 +13,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/colorPrimary">
+            android:background="?attr/colorPrimary">
 
             <TextView
                 android:text="Cnblogs"
@@ -38,14 +38,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@android:color/white">
+            android:background="?attr/appbg">
 
             <TextView
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:layout_marginTop="15dp"
                 android:textSize="18sp"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/textNight"
                 android:layout_width="match_parent"
                 android:text="博客园创立于2004年1月，是一个面向开发者的知识分享社区。自创建以来，博客园一直致力并专注于为开发者打造一个纯净的技术交流社区，推动并帮助开发者通过互联网分享知识，从而让更多开发者从中受益。博客园的使命是帮助开发者用代码改变世界。"
                 android:layout_height="wrap_content" />
@@ -56,14 +56,14 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@android:color/darker_gray" />
+                android:textColor="?attr/textNight" />
 
             <TextView
                 android:text="感谢一下开源项目"
                 android:textSize="20sp"
                 android:paddingLeft="15dp"
                 android:layout_marginTop="15dp"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/textLight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -73,7 +73,7 @@
                 android:paddingLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:text="-picasso\n-volley\n-butterknife\n-snappydb\n-logger\n-spots-dialog\n-photoview\n-fastjson"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/textNight"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>

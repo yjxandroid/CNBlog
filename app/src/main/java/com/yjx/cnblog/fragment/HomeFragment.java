@@ -92,6 +92,9 @@ public class HomeFragment extends BaseFragment {
         }
         newss = new ArrayList<InfoBean>();
         newsAdapter = new NewsAdapter(frmctx, newss);
+        if (blogs.size()<=0){
+            getBlogData();
+        }
     }
 
     @Override

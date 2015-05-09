@@ -1,9 +1,8 @@
 package com.yjx.cnblog.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.content.IntentCompat;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -36,7 +35,8 @@ public class SettingActivity extends BaseActivity {
 
     @InjectView(value = R.id.ll_gg)
     LinearLayout ll_gg;
-
+    @InjectView(value = R.id.ll_theme)
+    LinearLayout ll_theme;
 
     @InjectView(value = R.id.ll_about)
     LinearLayout ll_about;
@@ -54,6 +54,11 @@ public class SettingActivity extends BaseActivity {
     @InjectView(value = R.id.cb_gg)
     AppCompatCheckBox cb_gg;
 
+    @InjectView(value = R.id.cb_theme)
+    AppCompatCheckBox cb_theme;
+
+
+    boolean istheme = false;
 
     @Override
     public int getLayoutId() {
@@ -74,6 +79,7 @@ public class SettingActivity extends BaseActivity {
         screenHeight = metrics.heightPixels;
         cb_gg.setChecked(SPHelper.isShowImg(ctx));
         cb_wifi.setChecked(SPHelper.isWifiDown(ctx));
+        cb_theme.setChecked(SPHelper.getTheme(ctx));
     }
 
     @Override
@@ -83,14 +89,8 @@ public class SettingActivity extends BaseActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == android.R.id.home) {
-                    fl.animate().translationY(screenHeight).setDuration(500).setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            finish();
-                            overridePendingTransition(0, 0);
-                        }
-                    }).start();
+                    jumpAct(MainActivity.class, true);
+                    overridePendingTransition(0, 0);
                 }
                 return true;
             }
@@ -101,19 +101,14 @@ public class SettingActivity extends BaseActivity {
         ll_update.setOnClickListener(this);
         ll_what.setOnClickListener(this);
         ll_wifi.setOnClickListener(this);
+        ll_theme.setOnClickListener(this);
 
     }
 
     @Override
     public void onBackPressed() {
-        fl.animate().translationY(screenHeight).setDuration(500).setListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                finish();
-                overridePendingTransition(0, 0);
-            }
-        }).start();
+        jumpAct(MainActivity.class, true);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -133,10 +128,21 @@ public class SettingActivity extends BaseActivity {
             case R.id.ll_what:
                 jumpAct(WhatActivity.class, false);
                 break;
+            case R.id.ll_theme:
+                boolean cc = SPHelper.getTheme(ctx);
+                cb_theme.setChecked(!cb_theme.isChecked());
+                SPHelper.setTheme(ctx, !cc);
+                finish();
+                final Intent themeintent = getIntent();
+                themeintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(themeintent);
+                overridePendingTransition(0,0);
+                break;
             case R.id.ll_blog:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("http://www.cnblogs.com/likeandroid/"));
                 startActivity(intent);
+                overridePendingTransition(0, 0);
                 break;
             case R.id.ll_update:
                 break;

@@ -48,6 +48,7 @@ import dmax.dialog.SpotsDialog;
  * User: YJX
  * Date: 2015-05-03
  * Time: 00:31
+ * 作者信息页面
  */
 public class AuthorActivity extends BaseActivity {
     @InjectView(value = R.id.iv_header)

@@ -14,7 +14,7 @@
 
         <com.yjx.cnblog.view.CustomScrollView
             android:id="@+id/sl"
-            android:background="@android:color/white"
+            android:background="?attr/appbg"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -26,7 +26,7 @@
                 <TextView
                     android:id="@+id/tv_title"
                     android:textSize="18sp"
-                    android:textColor="@android:color/black"
+                    android:textColor="?attr/textLight"
                     android:padding="6dp"
                     android:layout_width="match_parent"
                     android:layout_height="60dp" />
@@ -35,7 +35,7 @@
                     android:id="@+id/tv_author"
                     android:textSize="16sp"
                     android:layout_marginLeft="8dp"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="?attr/textNight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -72,7 +72,7 @@
 
             <LinearLayout android:gravity="center"
                 android:orientation="horizontal"
-                android:background="@android:color/white"
+                android:background="?attr/appbg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

@@ -246,6 +246,11 @@ public class BlogDetailActivity extends BaseActivity {
                                 replace("&lt;", "<").replace("&amp;", "&");
                         content = content.replace("background-color: #F5F5F5;", "background-color: #4e4e4e;").replace("color: #000000;", "color: #8590A2;").replace("color: #0000ff;", "color: #1799ff;").replace("color: #008000;", "color: #00b200;").replace("color: #800000;", "color: #ca0000;");
 //                        content=HTMLUtils.replaceFont(content);
+                        if (!SPHelper.getTheme(ctx)){
+                            main = main.replace("{csses}", "style");
+                        }else{
+                            main = main.replace("{csses}", "style-night");
+                        }
                         if (SPHelper.isShowImg(ctx)) {
                             if (NetUtils.isWifi(ctx)) {
                                 content = main.replace("{html}", content);

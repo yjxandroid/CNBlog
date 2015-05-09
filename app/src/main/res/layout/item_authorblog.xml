@@ -8,6 +8,7 @@
     app:cardCornerRadius="2dp"
     android:layout_marginLeft="6dp"
     android:descendantFocusability="blocksDescendants"
+
     android:layout_marginRight="6dp"
     android:layout_marginTop="10dp">
 
@@ -15,6 +16,7 @@
         android:id="@+id/ll_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/appbg"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -23,7 +25,7 @@
             android:layout_marginTop="10dp">
             <TextView
                 android:id="@+id/tv_title"
-                android:textColor="@android:color/black"
+                android:textColor="?attr/textLight"
                 android:text="记一次android登陆页面的实现"
                 android:singleLine="true"
                 android:textSize="18sp"
@@ -33,7 +35,7 @@
 
             <TextView
                 android:id="@+id/tv_detail"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/textNight"
                 android:text="记一次android登陆页面的实现记一次android登陆页面的实现记一次android登陆页面的实现记一次android登陆页面的实现记一次android登陆页面的实现"
                 android:textSize="16sp"
                 android:layout_below="@id/tv_title"
@@ -49,7 +51,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="8dp"
                 android:singleLine="true"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="?attr/textNight"
                 android:textSize="16sp"
                 android:layout_width="wrap_content"
                 android:layout_below="@id/tv_detail"
