@@ -2,16 +2,20 @@ package com.yjx.cnblog.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.yjx.cnblog.R;
 import com.yjx.cnblog.base.BaseActivity;
-import com.yjx.cnblog.fragment.SetttingFragment;
+import com.yjx.cnblog.db.SPHelper;
 
 import butterknife.InjectView;
 
@@ -25,8 +29,31 @@ public class SettingActivity extends BaseActivity {
     @InjectView(value = R.id.toolbar)
     Toolbar toolbar;
     @InjectView(value = R.id.fl)
-    FrameLayout fl;
+    ScrollView fl;
     int screenWidht, screenHeight;
+    @InjectView(value = R.id.ll_wifi)
+    LinearLayout ll_wifi;
+
+    @InjectView(value = R.id.ll_gg)
+    LinearLayout ll_gg;
+
+
+    @InjectView(value = R.id.ll_about)
+    LinearLayout ll_about;
+
+    @InjectView(value = R.id.ll_update)
+    LinearLayout ll_update;
+
+    @InjectView(value = R.id.ll_what)
+    LinearLayout ll_what;
+
+    @InjectView(value = R.id.ll_blog)
+    LinearLayout ll_blog;
+    @InjectView(value = R.id.cb_wifi)
+    AppCompatCheckBox cb_wifi;
+    @InjectView(value = R.id.cb_gg)
+    AppCompatCheckBox cb_gg;
+
 
     @Override
     public int getLayoutId() {
@@ -40,12 +67,13 @@ public class SettingActivity extends BaseActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("设置");
-        getFragmentManager().beginTransaction().replace(R.id.fl,new SetttingFragment(),"设置").commit();
         WindowManager manager = getWindowManager();
         DisplayMetrics metrics = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(metrics);
         screenWidht = metrics.widthPixels;
         screenHeight = metrics.heightPixels;
+        cb_gg.setChecked(SPHelper.isShowImg(ctx));
+        cb_wifi.setChecked(SPHelper.isWifiDown(ctx));
     }
 
     @Override
@@ -54,7 +82,7 @@ public class SettingActivity extends BaseActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId()==android.R.id.home){
+                if (item.getItemId() == android.R.id.home) {
                     fl.animate().translationY(screenHeight).setDuration(500).setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
@@ -67,6 +95,13 @@ public class SettingActivity extends BaseActivity {
                 return true;
             }
         });
+        ll_about.setOnClickListener(this);
+        ll_blog.setOnClickListener(this);
+        ll_gg.setOnClickListener(this);
+        ll_update.setOnClickListener(this);
+        ll_what.setOnClickListener(this);
+        ll_wifi.setOnClickListener(this);
+
     }
 
     @Override
@@ -83,6 +118,30 @@ public class SettingActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.ll_wifi:
+                cb_wifi.setChecked(!cb_wifi.isChecked());
+                SPHelper.setWifiDown(ctx, cb_wifi.isChecked());
+                break;
+            case R.id.ll_gg:
+                cb_gg.setChecked(!cb_gg.isChecked());
+                SPHelper.setShowImg(ctx, cb_gg.isChecked());
+                break;
+            case R.id.ll_about:
+                jumpAct(AboutActivity.class, false);
+                break;
+            case R.id.ll_what:
+                jumpAct(WhatActivity.class, false);
+                break;
+            case R.id.ll_blog:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.cnblogs.com/likeandroid/"));
+                startActivity(intent);
+                break;
+            case R.id.ll_update:
+                break;
+        }
     }
+
+
 }

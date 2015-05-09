@@ -25,4 +25,5 @@ public class Constant {
     public static final int PAFESIZE=10;//默认每页请求的个数
     public static final String LOGTAG="CNBLOG";//日志TAG
     public static final String DBNAME="cnblog_db";//数据库名称
+
 }

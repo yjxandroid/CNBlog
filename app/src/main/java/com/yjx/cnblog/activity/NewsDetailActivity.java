@@ -33,7 +33,7 @@ import com.yjx.cnblog.Constant;
 import com.yjx.cnblog.R;
 import com.yjx.cnblog.base.BaseActivity;
 import com.yjx.cnblog.bean.InfoBean;
-import com.yjx.cnblog.fragment.SetttingFragment;
+import com.yjx.cnblog.db.SPHelper;
 import com.yjx.cnblog.utils.HTMLUtils;
 import com.yjx.cnblog.utils.NetUtils;
 import com.yjx.cnblog.utils.StringUtils;
@@ -213,7 +213,7 @@ public class NewsDetailActivity extends BaseActivity {
 //                        content = content.replace("<br />", "\n").replace("<br/>", "\n").replace("&nbsp;&nbsp;", "\t").replace("&nbsp;", " ").replace("&#39;", "\\").replace("&quot;", "\\").replace("&gt;", ">").replace("&lt;", "<").replace("&amp;", "&");
                         content = content.replace("background-color: #F5F5F5;", "background-color: #4e4e4e;").replace("color: #000000;", "color: #8590A2;").replace("color: #0000ff;", "color: #1799ff;").replace("color: #008000;", "color: #00b200;").replace("color: #800000;", "color: #ca0000;");
 //                        content= HTMLUtils.replaceFont(content);
-                        if (SetttingFragment.isShowImg(ctx)) {
+                        if (SPHelper.isShowImg(ctx)) {
                             if (NetUtils.isWifi(ctx)) {
                                 content = main.replace("{html}", content);
                                 wv_blogdetail.loadDataWithBaseURL("file:///android_asset/", content, "text/html", "utf-8", null);
@@ -241,7 +241,7 @@ public class NewsDetailActivity extends BaseActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
+                dialog.cancel();
                 Toast.makeText(ctx, "请求数据失败", Toast.LENGTH_SHORT).show();
 
             }

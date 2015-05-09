@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity {
     HomeFragment blogFragment;
     Fragment curfragment;
     ExploreFragment exploreFragment;
-    int  state=0;
+    int  state=1;
 
 
     @Override

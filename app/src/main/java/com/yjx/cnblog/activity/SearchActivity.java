@@ -146,7 +146,7 @@ public class SearchActivity extends BaseActivity {
         JSONRequest<AuthorsBean> request = new JSONRequest<AuthorsBean>(Request.Method.GET, Constant.SEARCHUSER + keys, AuthorsBean.class, new Response.Listener<AuthorsBean>() {
             @Override
             public void onResponse(AuthorsBean response) {
-                dialog.dismiss();
+                dialog.cancel();
                 if (response.getData() != null) {
 
                     authors.clear();
@@ -160,6 +160,7 @@ public class SearchActivity extends BaseActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                dialog.cancel();
                 Toast.makeText(ctx, "搜索失败", Toast.LENGTH_SHORT).show();
             }
         });

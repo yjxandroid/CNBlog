@@ -189,7 +189,7 @@ public class AuthorActivity extends BaseActivity {
         XMLRequest request = new XMLRequest(Request.Method.GET, Constant.URL + "u/" + info.getBlogapp() + "/posts/" + page + "/" + Constant.PAFESIZE, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
+                dialog.cancel();
                 Toast.makeText(ctx, "数据获取失败", Toast.LENGTH_SHORT).show();
                 page--;
                 if (page < 1) {
@@ -199,7 +199,7 @@ public class AuthorActivity extends BaseActivity {
         }, new Response.Listener<XmlPullParser>() {
             @Override
             public void onResponse(XmlPullParser response) {
-                dialog.dismiss();
+                dialog.cancel();
                 if (page == 1) {
                     infos.clear();
                     infos.addAll(XMLUtils.getInfos(response));
