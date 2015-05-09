@@ -56,6 +56,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:icon="@drawable/ic_launcher"
+            android:name=".activity.CommentsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:icon="@drawable/ic_launcher"
             android:name=".activity.AboutActivity"
             android:screenOrientation="portrait">
             <intent-filter>
