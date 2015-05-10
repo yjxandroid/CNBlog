@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/layout_top" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+     android:paddingTop="16dp"
+        android:background="?attr/appbg"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/et_name"
+            android:singleLine="true"
+            android:hint="请输入用户名"
+
+            android:textColor="?attr/textLight" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/et_password"
+            android:layout_marginTop="16dp"
+            android:password="true"
+            android:singleLine="true"
+            android:hint="请输入用户名"
+            android:textColor="?attr/textLight" />
+    </LinearLayout>
+
+</LinearLayout>
