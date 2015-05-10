@@ -1,0 +1,11 @@
+body{font-family:Helvetica,"Microsoft Yahei",Verdana,Helvetica,SimSun,Arial,"Arial Unicode MS",MingLiu,PMingLiu,"MS Gothic",sans-serief;margin:0;padding:8px; background-color:#25262b; color:#8590A2;word-wrap:break-word;}
+a{ color:#1799ff;}
+p{margin-top:0;margin-bottom:5pt;line-height: 1.6em;}  
+img{max-width:90%;height:auto;}
+div.bimg{text-align:center;padding:0;}
+audio{width:100%}
+*{-webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    /*-webkit-text-size-adjust: none;*/ /* prevent webkit from resizing text to fit */
+    -webkit-tap-highlight-color: rgba(0,0,0,0.0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    /*-webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+}
