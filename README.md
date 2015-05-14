@@ -48,6 +48,9 @@
 
 2.邮箱：1197565170@qq.com
 
+##注意
+1.下载运行的时候，请把 Android Support Library 升级到最新的版本！！
+
 ##感谢以下开源项目
 
 1.[picasso](https://github.com/square/picasso): 异步图片加载框架！！使用非常简单
