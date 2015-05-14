@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=0.5, initial-scale=1, maximum-scale=2.0, user-scalable=0">
+    <script src="jquery.js"></script>
+    <script src="jsencrypt.js"></script>
+    <script>
+        console.log( "tool script" );
+        function encryptLoginInfo(name, pwd){
+            console.log("start encrypt...");
+            console.log( "name="+name+",pwd="+pwd );
+            var encrypt = new JSEncrypt();
+            encrypt.setPublicKey('MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCp0wHYbg/NOPO3nzMD3dndwS0MccuMeXCHgVlGOoYyFwLdS24Im2e7YyhB0wrUsyYf0/nhzCzBK8ZC9eCWqd0aHbdgOQT6CuFQBMjbyGYvlVYU2ZP7kG9Ft6YV6oc9ambuO7nPZh+bvXH0zDKfi02prknrScAKC0XhadTHT3Al0QIDAQAB');
+            var encrypted_name = encrypt.encrypt(name);
+            var encrypted_pwd = encrypt.encrypt(pwd);
+            console.log( "finishing encrypt..." );
+            window.android.onEncrypted(encrypted_name,encrypted_pwd);
+        }
+
+    </script>
+</head>
+<body>
+</body>
+</html>
