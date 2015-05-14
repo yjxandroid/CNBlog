@@ -63,4 +63,5 @@ public class XMLRequest extends Request<XmlPullParser> {
         return retryPolicy;
     }
 
+
 }

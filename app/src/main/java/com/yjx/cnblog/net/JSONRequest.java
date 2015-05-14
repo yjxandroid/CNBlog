@@ -1,7 +1,6 @@
 package com.yjx.cnblog.net;
 
 import com.alibaba.fastjson.JSON;
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -10,9 +9,6 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by 杨佳星 on 2015/1/9.
@@ -48,15 +44,6 @@ public class JSONRequest<T> extends Request<T> {
       mListener.onResponse(response);
     }
 
-    /*
-       设置请求头 Header
-     */
-    @Override
-    public Map<String, String> getHeaders() throws AuthFailureError {
-        Map<String,String> map=new HashMap<String,String>();
-        map.put("Charset","UTF-8");
-        return map;
-    }
 
     /*
       设置超时
@@ -66,6 +53,7 @@ public class JSONRequest<T> extends Request<T> {
         RetryPolicy retryPolicy= new DefaultRetryPolicy(5000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         return retryPolicy;
     }
+
 
 
 }
