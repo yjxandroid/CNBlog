@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
      android:paddingTop="16dp"
-        android:background="?attr/appbg"
+        android:background="?attr/appBg"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.AppCompatEditText
@@ -19,7 +19,7 @@
             android:id="@+id/et_name"
             android:singleLine="true"
             android:hint="请输入用户名"
-
+android:text="1197565170"
             android:textColor="?attr/textLight" />
 
         <android.support.v7.widget.AppCompatEditText
@@ -30,6 +30,7 @@
             android:password="true"
             android:singleLine="true"
             android:hint="请输入用户名"
+            android:text="yjx8637455381111"
             android:textColor="?attr/textLight" />
     </LinearLayout>
 

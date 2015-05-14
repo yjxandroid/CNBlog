@@ -2,5 +2,5 @@
 <resources>
     <attr name="textLight" format="reference" />
     <attr name="textNight" format="reference" />
-    <attr name="appbg" format="reference" />
+    <attr name="appBg" format="reference" />
 </resources>

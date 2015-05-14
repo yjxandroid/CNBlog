@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="280dp"
-    android:background="?attr/appbg"
+    android:background="?attr/appBg"
     android:layout_gravity="start"
     android:layout_height="match_parent">
 

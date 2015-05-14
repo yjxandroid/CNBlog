@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:id="@+id/fl"
-        android:background="?attr/appbg"
+        android:background="?attr/appBg"
         android:layout_height="fill_parent">
 
         <LinearLayout

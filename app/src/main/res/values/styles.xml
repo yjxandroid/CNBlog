@@ -4,22 +4,22 @@
     <style name="AppTheme" parent="BaseAPPThemeLight">
 
     </style>
+
     <style name="AppThemeNight" parent="BaseAPPThemeNight">
 
     </style>
+    <!--白天-->
     <style name="BaseAPPThemeLight" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="textLight">@android:color/black</item>
-        <item name="appbg">@android:color/white</item>
+        <item name="textLight">@color/colorPrimaryNight</item>
+        <item name="appBg">@color/white</item>
         <item name="textNight">@color/gray</item>
-
     </style>
-
-
+    <!--黑夜主题-->
     <style name="BaseAPPThemeNight" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimaryNight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
@@ -27,9 +27,10 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="textLight">@android:color/white</item>
-        <item name="appbg">@color/colorPrimaryDarkNight</item>
+        <item name="appBg">@color/colorPrimaryDarkNight</item>
         <item name="textNight">@color/gray</item>
     </style>
+
     <style name="Custom" parent="android:Theme.DeviceDefault.Dialog">
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">数据加载中...</item>

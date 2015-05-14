@@ -26,7 +26,7 @@
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/appbg"
+                    android:background="?attr/appBg"
                     android:orientation="vertical"
                     android:paddingTop="16dp"
                     android:paddingBottom="16dp">

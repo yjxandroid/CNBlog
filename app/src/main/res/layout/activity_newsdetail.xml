@@ -14,7 +14,7 @@
 
         <com.yjx.cnblog.view.CustomScrollView
             android:id="@+id/sl"
-            android:background="?attr/appbg"
+            android:background="?attr/appBg"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -72,7 +72,7 @@
 
             <LinearLayout android:gravity="center"
                 android:orientation="horizontal"
-                android:background="?attr/appbg"
+                android:background="?attr/appBg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 

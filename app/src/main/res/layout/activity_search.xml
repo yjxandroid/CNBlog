@@ -27,7 +27,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/rv_author"
-        android:background="?attr/appbg"
+        android:background="?attr/appBg"
         android:layout_height="match_parent"
         android:visibility="visible"
         android:layout_marginBottom="10dp" />
