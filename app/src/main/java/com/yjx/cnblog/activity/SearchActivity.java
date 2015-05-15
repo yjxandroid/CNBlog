@@ -6,6 +6,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -31,8 +32,12 @@ import com.yjx.cnblog.listener.onAdapterTouch;
 import com.yjx.cnblog.net.JSONRequest;
 import com.yjx.cnblog.utils.APPUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.InjectView;
 import dmax.dialog.SpotsDialog;
@@ -52,6 +57,8 @@ public class SearchActivity extends BaseActivity {
     List<AuthorBean> authors;
     int screenHeight;
     AlertDialog dialog;
+
+    Handler handler;
 
     @Override
     public int getLayoutId() {
@@ -76,6 +83,8 @@ public class SearchActivity extends BaseActivity {
         rv_author.setItemAnimator(new DefaultItemAnimator());
         rv_author.setAdapter(adapter);
         dialog = new SpotsDialog(ctx, R.style.Search);
+
+        handler = new Handler();
     }
 
     @Override
@@ -142,8 +151,24 @@ public class SearchActivity extends BaseActivity {
         dialog.cancel();
     }
 
-    private void search(String keys) {
-        JSONRequest<AuthorsBean> request = new JSONRequest<AuthorsBean>(Request.Method.GET, Constant.SEARCHUSER + keys, AuthorsBean.class, new Response.Listener<AuthorsBean>() {
+    private void search(final String keys) {
+        final StringBuilder sb = new StringBuilder(Constant.SEARCHUSER);
+        sb.append('?');
+        Map<String,String> params=new HashMap<String,String>();
+        params.put("op","AuthorSearch");
+        params.put("key",keys);
+        for(Map.Entry<String, String> entry : params.entrySet()) {
+            try {
+                sb.append(entry.getKey()).append('=').append(URLEncoder.encode(entry.getValue(), "utf-8")).append('&');
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        sb.deleteCharAt(sb.length()-1);
+
+
+
+        final JSONRequest<AuthorsBean> request = new JSONRequest<AuthorsBean>(Request.Method.GET, sb.toString(), AuthorsBean.class, new Response.Listener<AuthorsBean>() {
             @Override
             public void onResponse(AuthorsBean response) {
                 dialog.cancel();
@@ -166,6 +191,9 @@ public class SearchActivity extends BaseActivity {
         });
         request.setTag("search");
         client.addTask(request);
+
+
+
     }
 
 

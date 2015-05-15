@@ -18,7 +18,7 @@ public class Constant {
     //新闻详情
     public static final String NEWSURLDETAIL="http://cnblogs.davismy.com/Handler.ashx?op=GetNewContent&news_id=";
 
-    public static final String SEARCHUSER="http://cnblogs.davismy.com/Handler.ashx?op=AuthorSearch&key=";//搜索作者
+    public static final String SEARCHUSER="http://cnblogs.davismy.com/Handler.ashx";//搜索作者
 
     public static final int PAFESIZE=10;//默认每页请求的个数
     public static final String LOGTAG="CNBLOG";//日志TAG
