@@ -26,7 +26,6 @@ public class JSONRequest<T> extends Request<T> {
         this.mListener=listener;
         this.mClass=mClass;
     }
-
     @Override
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         if(response.statusCode!=200){
@@ -47,19 +46,13 @@ public class JSONRequest<T> extends Request<T> {
     protected void deliverResponse(T response) {
       mListener.onResponse(response);
     }
-
-
-    /*
-      设置超时
-     */
     @Override
-    public RetryPolicy getRetryPolicy() {
+    public RetryPolicy getRetryPolicy() {//设置超时
         RetryPolicy retryPolicy= new DefaultRetryPolicy(5000,DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
         return retryPolicy;
     }
-
     @Override
-    public Map<String, String> getHeaders() throws AuthFailureError {
+    public Map<String, String> getHeaders() throws AuthFailureError {//添加header
         Map<String,String> map=new HashMap<String,String>();
         map.put("Charset","UTF-8");
         return map;
